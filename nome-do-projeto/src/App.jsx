@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "@/styles/App.module.css";
 
 function App() {
-  const API_KEY = "8mX7gZlFBm0bJ7jjhjg8atBpr5eGql72xYvIMpT4";
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
   const [spots, setSpots] = useState(null);
   const [selectedSpotId, setSelectedSpotId] = useState(null);
