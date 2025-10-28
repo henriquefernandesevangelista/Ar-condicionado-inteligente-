@@ -228,8 +228,7 @@ function DataSelect() {
                         </Typography>
                       </Grid>
                     </Grid>
-
-                    {/* Gráfico */}
+                    
                     <Box sx={{ width: "100%", height: 300 }}>
                       <ResponsiveContainer>
                         <BarChart data={chartData}>

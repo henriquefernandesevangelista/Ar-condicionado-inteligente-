@@ -14,14 +14,14 @@ import AppRoutes from "@/routes/AppRoutes";
 import { createTheme } from "@mui/material/styles";
 
 function App() {
-  // Detecta o tema do sistema
+  
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
   const [mode, setMode] = useState(prefersDark ? "dark" : "light");
 
-  // Alterna o tema
+  
   const toggleTheme = () => setMode((prev) => (prev === "light" ? "dark" : "light"));
 
-  // Cria o tema dinâmico
+
   const theme = useMemo(
     () =>
       createTheme({
@@ -51,7 +51,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      {/* Fundo com degradê e transição suave */}
+      
       <Box
         sx={{
           minHeight: "100vh",
@@ -61,7 +61,7 @@ function App() {
           color: theme.palette.text.primary,
         }}
       >
-        {/* AppBar moderna */}
+       
         <AppBar
           position="sticky"
           elevation={6}
@@ -101,7 +101,7 @@ function App() {
           </Toolbar>
         </AppBar>
 
-        {/* Conteúdo principal */}
+        
         <Box sx={{ pt: 4 }}>
           <AppRoutes />
         </Box>
