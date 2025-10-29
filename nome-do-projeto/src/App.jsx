@@ -3,24 +3,18 @@ import {
   ThemeProvider,
   CssBaseline,
   Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
   useMediaQuery,
 } from "@mui/material";
-import { Brightness4, Brightness7 } from "@mui/icons-material";
-import AppRoutes from "@/routes/AppRoutes";
 import { createTheme } from "@mui/material/styles";
+import AppRoutes from "@/routes/AppRoutes";
+import Navbar from "@/components/Navbar";
 
 function App() {
-  
   const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
   const [mode, setMode] = useState(prefersDark ? "dark" : "light");
 
-  
-  const toggleTheme = () => setMode((prev) => (prev === "light" ? "dark" : "light"));
-
+  const toggleTheme = () =>
+    setMode((prev) => (prev === "light" ? "dark" : "light"));
 
   const theme = useMemo(
     () =>
@@ -50,8 +44,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
-      
       <Box
         sx={{
           minHeight: "100vh",
@@ -61,47 +53,8 @@ function App() {
           color: theme.palette.text.primary,
         }}
       >
-       
-        <AppBar
-          position="sticky"
-          elevation={6}
-          sx={{
-            background:
-              mode === "dark"
-                ? "linear-gradient(90deg, #1f1f1f, #2a2a2a)"
-                : "linear-gradient(90deg, #2196f3, #6a1b9a)",
-            transition: "background 0.6s ease",
-          }}
-        >
-          <Toolbar
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              sx={{ letterSpacing: 0.5 }}
-            >
-              🧠 Ar-condicionado Inteligente
-            </Typography>
+        <Navbar mode={mode} toggleTheme={toggleTheme} />
 
-            <IconButton
-              onClick={toggleTheme}
-              color="inherit"
-              sx={{
-                transition: "transform 0.3s ease",
-                "&:hover": { transform: "rotate(25deg)" },
-              }}
-            >
-              {mode === "dark" ? <Brightness7 /> : <Brightness4 />}
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-
-        
         <Box sx={{ pt: 4 }}>
           <AppRoutes />
         </Box>
